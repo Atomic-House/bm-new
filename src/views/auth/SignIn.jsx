@@ -1,8 +1,40 @@
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { account } from "../../appwrite/appConfig";
+
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState("");
+  const [session, setSession] = useState();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  // Login User
+  const loginUser = async (e) => {
+    e.preventDefault();
+    setLoader(true);
+
+    try {
+      await account.createEmailSession(user.email, user.password);
+      setLoader(false);
+      const sessions = await account.createEmailSession(user.email, user.password);
+      setSession(sessions);
+      navigate("/");
+    } catch (error) {
+      setError("Invalid credentials. Please check the email and password.");
+      console.log(error)
+      setLoader(false);
+    }
+  };
+
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
@@ -34,6 +66,9 @@ export default function SignIn() {
           placeholder="mail@simmmple.com"
           id="email"
           type="text"
+          onChange={(e) =>
+            setUser({ ...user, email: e.target.value })
+          }
         />
 
         {/* Password */}
@@ -44,6 +79,9 @@ export default function SignIn() {
           placeholder="Min. 8 characters"
           id="password"
           type="password"
+          onChange={(e) =>
+            setUser({ ...user, password: e.target.value })
+          }
         />
         {/* Checkbox */}
         <div className="mb-4 flex items-center justify-between px-2">
@@ -60,7 +98,7 @@ export default function SignIn() {
             Forgot Password?
           </a>
         </div>
-        <button className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
+        <button onClick={loginUser} className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
           Sign In
         </button>
         <div className="mt-4">
