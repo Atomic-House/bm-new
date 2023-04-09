@@ -4,8 +4,23 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes.js";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectUser } from "store/userSlice";
+import { fetchUsers } from "store/userSlice";
 
 export default function Admin(props) {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { users, loading } = useSelector(selectUser);
+  useEffect(() => {
+    if (loading !== "loaded") {
+      dispatch(fetchUsers());
+    }
+  }, [dispatch]);
+
   const { ...rest } = props;
   const location = useLocation();
   const [open, setOpen] = React.useState(true);
@@ -57,6 +72,9 @@ export default function Admin(props) {
   };
 
   document.documentElement.dir = "ltr";
+  if (loading === "error") {
+    return navigate("/auth/sign-in");
+  }
   return (
     <div className="flex h-full w-full">
       <Sidebar open={open} onClose={() => setOpen(false)} />
@@ -69,6 +87,8 @@ export default function Admin(props) {
           {/* Routes */}
           <div className="h-full">
             <Navbar
+              users={users}
+              loading={loading}
               onOpenSidenav={() => setOpen(true)}
               logoText={"Horizon UI Tailwind React"}
               brandText={currentRoute}

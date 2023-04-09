@@ -10,26 +10,41 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("");
-  const [session, setSession] = useState();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   // Login User
+  // const loginUser = async (e) => {
+  //   e.preventDefault();
+  //   setLoader(true);       
+     
+  //   try {
+  //     const res = await dispatch(LoginUsers(user.email, user.password))
+  //     setLoader(false);
+  //     setSession(res);
+  //     console.log(res)
+  //     navigate("/");
+  //   } catch (error) {
+  //     setError("Invalid credentials. Please check the email and password.");
+  //     console.log(error)
+  //     setLoader(false);
+  //   }
+  // };
+
   const loginUser = async (e) => {
     e.preventDefault();
     setLoader(true);
 
     try {
-      await account.createEmailSession(user.email, user.password);
-      setLoader(false);
-      const sessions = await account.createEmailSession(user.email, user.password);
-      setSession(sessions);
-      navigate("/");
+      await account.createEmailSession(user.email, user.password).then((res)=>{
+        setLoader(false);
+        navigate("/");
+      })
     } catch (error) {
-      setError("Invalid credentials. Please check the email and password.");
-      console.log(error)
+      setError(error.message);
+      console.log(error.message);
       setLoader(false);
     }
   };
@@ -57,6 +72,9 @@ export default function SignIn() {
           <div className="h-px w-full bg-gray-200 dark:bg-navy-700" />
           <p className="text-base text-gray-600 dark:text-white"> or </p>
           <div className="h-px w-full bg-gray-200 dark:bg-navy-700" />
+        </div>
+        <div className="my-5 text-red-400 font-bold text-center">
+          {error && error}
         </div>
         {/* Email */}
         <InputField
@@ -99,7 +117,7 @@ export default function SignIn() {
           </a>
         </div>
         <button onClick={loginUser} className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
-          Sign In
+          {loader ? "Signing in..." : "Sign In"}
         </button>
         <div className="mt-4">
           <span className=" text-sm font-medium text-navy-700 dark:text-gray-600">

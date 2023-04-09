@@ -12,37 +12,37 @@
 // import CheckTable from "views/admin/default/components/CheckTable";
 // import ComplexTable from "views/admin/default/components/ComplexTable";
 // import DailyTraffic from "views/admin/default/components/DailyTraffic";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { selectUser } from "store/userSlice";
-import { fetchUsers } from "store/userSlice";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { selectUser } from "store/userSlice";
+// import { fetchUsers } from "store/userSlice";
 import TaskCard from "views/admin/default/components/TaskCard";
 // import tableDataCheck from "./variables/tableDataCheck.json";
 // import tableDataComplex from "./variables/tableDataComplex.json";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const { users, loading, error } = useSelector(selectUser);
+  // const dispatch = useDispatch();
+  // const { users, loading, error } = useSelector(selectUser);
 
-  useEffect(() => {
-    if (loading != "loaded") {
-      dispatch(fetchUsers());
-    }
-    console.log(users);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (loading != "loaded") {
+  //     dispatch(fetchUsers());
+  //     console.log(users)
+  //   }
+  //   console.log(users);
+  // }, [dispatch]);
 
-  if (loading === "error") {
-    return navigate("/auth/sign-in");
-  }
+  // if (loading === "error") {
+  //   return navigate("/auth/sign-in");
+  // }
+
+
 
   return (
-    <>
-      {loading === "loading" ? (
-        "Loading..."
-      ) : (
+      
         <div className="w-80">
           <TaskCard />
         </div>
@@ -125,8 +125,7 @@ const Dashboard = () => {
         //     </div>
         //   </div>
         // </div>
-      )}
-    </>
+  
   );
 };
 

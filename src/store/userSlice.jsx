@@ -18,18 +18,18 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-export const LoginUsers = createAsyncThunk(
-  "users/LoginUsers",
-  async (email, password) => {
-    try {
-      const response = await account.createEmailSession(email, password);
-      // If you want to get something back
-      return response;
-    } catch (err) {
-      console.error(err.message)
-    }
-  }
-);
+// export const LoginUsers = createAsyncThunk(
+//   "users/LoginUsers",
+//   async (email, password, thunkAPI) => {
+//     try {
+//       const response = await account.createEmailSession(email, password);
+//       // If you want to get something back
+//       return response;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue({ error: error.message });
+//     }
+//   }
+// );
 
 const initialState = {
   users: [],
