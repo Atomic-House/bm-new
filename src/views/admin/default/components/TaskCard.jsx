@@ -4,7 +4,7 @@ import Checkbox from "components/checkbox";
 import { MdDragIndicator, MdCheckCircle } from "react-icons/md";
 import Card from "components/card";
 
-const TaskCard = () => {
+const TaskCard = ({ cards, title }) => {
   return (
     <Card extra="pb-7 p-[20px]">
       {/* task header */}
@@ -14,7 +14,7 @@ const TaskCard = () => {
             <MdCheckCircle className="h-6 w-6 text-brand-500 dark:text-white" />
           </div>
           <h4 className="ml-4 text-xl font-bold text-navy-700 dark:text-white">
-            Tasks
+            {title}
           </h4>
         </div>
         <CardMenu />
@@ -22,67 +22,21 @@ const TaskCard = () => {
 
       {/* task content */}
 
-      <div className="h-full w-full">
-        <div className="mt-5 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Mobile App Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
+      {cards?.map((item) => (
+        <div className="h-full w-full" key={item.$id}>
+          <div className="mt-5 flex items-center justify-between p-2">
+            <div className="flex items-center justify-center gap-2">
+              <Checkbox />
+              <p className="text-base font-bold text-navy-700 dark:text-white">
+                {item.title}
+              </p>
+            </div>
+            <div>
+              <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
+            </div>
           </div>
         </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-      </div>
+      ))}
     </Card>
   );
 };

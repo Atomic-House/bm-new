@@ -15,24 +15,6 @@ export default function SignIn() {
     password: "",
   });
 
-  // Login User
-  // const loginUser = async (e) => {
-  //   e.preventDefault();
-  //   setLoader(true);       
-     
-  //   try {
-  //     const res = await dispatch(LoginUsers(user.email, user.password))
-  //     setLoader(false);
-  //     setSession(res);
-  //     console.log(res)
-  //     navigate("/");
-  //   } catch (error) {
-  //     setError("Invalid credentials. Please check the email and password.");
-  //     console.log(error)
-  //     setLoader(false);
-  //   }
-  // };
-
   const loginUser = async (e) => {
     e.preventDefault();
     setLoader(true);
