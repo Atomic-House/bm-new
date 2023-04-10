@@ -4,7 +4,7 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectUser } from "store/userSlice";
@@ -12,7 +12,6 @@ import { fetchUsers } from "store/userSlice";
 
 export default function Admin(props) {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const { users, loading } = useSelector(selectUser);
   useEffect(() => {
@@ -23,15 +22,15 @@ export default function Admin(props) {
 
   const { ...rest } = props;
   const location = useLocation();
-  const [open, setOpen] = React.useState(true);
-  const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
+  const [open, setOpen] = useState(true);
+  const [currentRoute, setCurrentRoute] = useState("Main Dashboard");
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", () =>
       window.innerWidth < 1200 ? setOpen(false) : setOpen(true)
     );
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     getActiveRoute(routes);
   }, [location.pathname]);
 
@@ -72,6 +71,7 @@ export default function Admin(props) {
   };
 
   document.documentElement.dir = "ltr";
+
   if (loading === "error") {
     return navigate("/auth/sign-in");
   }

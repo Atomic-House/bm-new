@@ -5,6 +5,7 @@ import { MdDragIndicator, MdCheckCircle } from "react-icons/md";
 import Card from "components/card";
 
 const TaskCard = ({ cards, title }) => {
+  
   return (
     <Card extra="pb-7 p-[20px]">
       {/* task header */}
@@ -14,7 +15,7 @@ const TaskCard = ({ cards, title }) => {
             <MdCheckCircle className="h-6 w-6 text-brand-500 dark:text-white" />
           </div>
           <h4 className="ml-4 text-xl font-bold text-navy-700 dark:text-white">
-            {title}
+          {title}
           </h4>
         </div>
         <CardMenu />
