@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/bm-new/static/css/main.21514165.css",
+    "main.js": "/bm-new/static/js/main.b69e09c2.js",
+    "static/media/auth.png": "/bm-new/static/media/auth.20d5979b439e1531640d.png",
+    "static/media/NftBanner1.png": "/bm-new/static/media/NftBanner1.87062366f75bedd52bd2.png",
+    "static/media/banner.png": "/bm-new/static/media/banner.ef572d78f29b0fee0a09.png",
+    "static/media/Nft2.png": "/bm-new/static/media/Nft2.7897c45d2601ee3adfb5.png",
+    "static/media/avatar11.png": "/bm-new/static/media/avatar11.1060b63041fdffa5f8ef.png",
+    "static/media/avatar2.png": "/bm-new/static/media/avatar2.5692c39db4f8c0ea999e.png",
+    "static/media/avatar3.png": "/bm-new/static/media/avatar3.9f646ac5920fa40adf00.png",
+    "static/media/avatar1.png": "/bm-new/static/media/avatar1.eeef2af6dfcd3ff23cb8.png",
+    "static/media/Nft4.png": "/bm-new/static/media/Nft4.5fc37877b25c9fb9a52d.png",
+    "static/media/Nft3.png": "/bm-new/static/media/Nft3.3b3e6a4b3ada7618de6c.png",
+    "static/media/Nft6.png": "/bm-new/static/media/Nft6.9ff5403226e81a6fd390.png",
+    "static/media/Navbar.png": "/bm-new/static/media/Navbar.f96a9f58c491b9acda99.png",
+    "static/media/Nft1.png": "/bm-new/static/media/Nft1.0fea34cca5aed6cad72b.png",
+    "static/media/avatar4.png": "/bm-new/static/media/avatar4.54d5c1de851c273b2cd9.png",
+    "static/media/Nft5.png": "/bm-new/static/media/Nft5.62dbaf7dd91b4180035c.png",
+    "static/media/image1.png": "/bm-new/static/media/image1.5d02805328278985e71f.png",
+    "static/media/image3.png": "/bm-new/static/media/image3.847e2837e715cbf5e4cc.png",
+    "static/media/image2.png": "/bm-new/static/media/image2.556e407e0cd69698d537.png",
+    "index.html": "/bm-new/index.html",
+    "static/media/checked.svg": "/bm-new/static/media/checked.eebdda355aff27593261.svg",
+    "main.21514165.css.map": "/bm-new/static/css/main.21514165.css.map",
+    "main.b69e09c2.js.map": "/bm-new/static/js/main.b69e09c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21514165.css",
+    "static/js/main.b69e09c2.js"
+  ]
+}
